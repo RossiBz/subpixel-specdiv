@@ -1,0 +1,83 @@
+
+
+
+##################################################
+
+# Project: Uncovering the hidden: Leveraging sub-pixel spectral diversity to estimate plant diversity from space
+
+# Script Purpose: Calculate endmember diversity for simulated communities, as done in Rossi and Gholizadeh (2023) Experiment 1
+# using vca and ppi as endmember extraction techniques
+
+# Date: 01.08.2022
+
+# Author: Christian Rossi
+
+##################################################
+
+#load packages
+
+#library(devtools)
+#install_github("RossiBz/unmix")
+
+library(unmix)
+library(tidyverse)
+library(vegan)
+
+#load simmulated communities-------------------------------------
+simu_communities <-
+  read.table(
+    "simulated_communities_field_red100_soil2_3speciesup03_SNR60.csv",
+    sep = ";",
+    header = TRUE
+  )
+
+# extract the spectral signatures
+simu_spectra <- t(as.matrix(simu_communities[, 6:2007]))
+
+
+#finding the number of endmembers in the DESIS image using the noise-whitened Harsanyi–Farrand–Chang method  ----------------
+num_end <- unmix::hfcvd(simu_spectra)
+
+#extracting the endmembers for each simulated community with the pixel purity index or vertex component analysis -------------
+# and calculating the proportion of explained variance capturing plant diversity with the endmember diversity over multiple runs (n=10)
+
+r2.matrix <- matrix(NA, nrow = 10, ncol = 3)
+
+for (i in 1:10)
+{
+  #extract endmembers
+  endmembers <- unmix::ppi(simu_spectra, num_end)
+  #endmembers <-unmix::vca(simu_spectra,num_end)
+  
+  #estimate endmembers per community
+  end_abund <-
+    unmix::estimateabundanceLS(simu_spectra, endmembers, method = "fcls")
+  row.names(end_abund) <- paste0("end_", seq(1:num_end))
+  
+  #calculate endmember diversity for each community
+  div_endmembers <-
+    cbind(simu_communities[, 1:6], t(end_abund)) %>% mutate(across(end_1:row.names(end_abund)[num_end], ~
+                                                                     replace(., . <  0.01 , 0))) %>%
+    rowwise() %>% mutate(
+      Richness_end = specnumber(c_across(end_1:row.names(end_abund)[num_end])),
+      Simpson_end = diversity(c_across(end_1:row.names(end_abund)[num_end]), index = "invsimpson")
+    ) %>%
+    dplyr::select(-c(end_1:row.names(end_abund)[num_end])) %>% drop_na() %>% filter(Simpson <
+                                                                                      100)
+  
+  
+  
+  #calculate explained variance capturing plant diversity with the endmember diversity
+  r2.matrix[i, ] <- c(
+    cor(div_endmembers, method = "pearson")[7, 5],
+    cor(div_endmembers, method = "pearson")[8, 3],
+    cor(div_endmembers, method = "pearson")[8, 6]
+  ) ^ 2
+  
+}
+
+#mean over multiple runs
+colMeans(r2.matrix,na.rm = TRUE)
+
+#standard deviation over multiple runs
+apply(r2.matrix, 2, sd)
