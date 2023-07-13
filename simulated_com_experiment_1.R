@@ -1,6 +1,4 @@
 
-
-
 ##################################################
 
 # Project: Uncovering the hidden: Leveraging sub-pixel spectral diversity to estimate plant diversity from space
@@ -32,7 +30,7 @@ simu_communities <-
   )
 
 # extract the spectral signatures
-simu_spectra <- t(as.matrix(simu_communities[, 6:2007]))
+simu_spectra <- t(as.matrix(simu_communities[, 6:2006]))
 
 
 #finding the number of endmembers in the DESIS image using the noise-whitened Harsanyi–Farrand–Chang method  ----------------
@@ -56,21 +54,21 @@ for (i in 1:10)
   
   #calculate endmember diversity for each community
   div_endmembers <-
-    cbind(simu_communities[, 1:6], t(end_abund)) %>% mutate(across(end_1:row.names(end_abund)[num_end], ~
+    cbind(simu_communities[, 1:5], t(end_abund)) %>% mutate(across(end_1:row.names(end_abund)[num_end], ~
                                                                      replace(., . <  0.01 , 0))) %>%
     rowwise() %>% mutate(
       Richness_end = specnumber(c_across(end_1:row.names(end_abund)[num_end])),
       Simpson_end = diversity(c_across(end_1:row.names(end_abund)[num_end]), index = "invsimpson")
     ) %>%
-    dplyr::select(-c(end_1:row.names(end_abund)[num_end])) %>% drop_na() %>% filter(Simpson < 100)
+    dplyr::select(-c(end_1:row.names(end_abund)[num_end])) %>% drop_na() %>% filter(Simpson_no < 100)
   
   
   
   #calculate explained variance capturing plant diversity with the endmember diversity
   r2.matrix[i, ] <- c(
-    cor(div_endmembers, method = "pearson")[7, 5],
-    cor(div_endmembers, method = "pearson")[8, 3],
-    cor(div_endmembers, method = "pearson")[8, 6]
+    cor(div_endmembers, method = "pearson")[6, 4],
+    cor(div_endmembers, method = "pearson")[7, 3],
+    cor(div_endmembers, method = "pearson")[7, 5]
   ) ^ 2
   
 }
