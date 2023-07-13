@@ -4,7 +4,7 @@ Here we provide the codes used to calculate the endmember diversity in Rossi & G
 
 Rossi, C., and Gholizadeh, H. (2023). Uncovering the hidden diversity: Leveraging sub-pixel spectral diversity to estimate plant diversity from space. Submitted to Remote Sensing of Environment.
 
-The codes rely on the R package unmix https://github.com/RossiBz/unmix/ developed during the study.
+The codes rely on the R package unmix https://github.com/RossiBz/unmix/ developed in the framework of the study.
 
 simulated_com_experiment_1.R provides the code to run experiment one on the simulated communities for the Vertex component analysis (VCA) and Purest pixel index (PPI) endmember extract techniques. 
 For the endmember extraction techniques, SISAL and MVC-NMF, Matlab was used. The codes are available from http://www.lx.it.pt/~bioucas/code.html and https://github.com/aicip/MVCNMF
