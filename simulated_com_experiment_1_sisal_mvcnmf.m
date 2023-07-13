@@ -17,16 +17,14 @@ close all;  % Close all figures (except those of imtool.)
 clear;  % Erase all existing variables. Or clearvars if you want.
 
 
-% define path of simulated hyperspectral data
-data_path = 'Q:/prjdata/botany/grassland/tallgrass_prairie_oklahoma/code/output/';
 
-%define file name
+%load simmulated communities-------------------------------------
+
 FILENAME_HS ='simulated_communities_field_red100_soil2_3speciesup03_SNR60.csv';
 
-comm_data = readmatrix([data_path FILENAME_HS]);
+comm_data = readmatrix([FILENAME_HS]);
 
-
-% last 17 rows are the endmembers  
+% extract spectral signature
 comm_data_spec =comm_data(1:15300,6:end)';
 
 [B N]=size(comm_data_spec);
