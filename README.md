@@ -11,7 +11,7 @@ simulated_com_experiment_1.R provides the code to run experiment one on the simu
 simulated_com_experiment_1_sisal_mvcnmf.m is the matlab code to estimate the endmember abundance when  SISAL or MVC-NMF algorithms are used for endmember extraction.
 The codes for these algorithms are available from http://www.lx.it.pt/~bioucas/code.html and https://github.com/aicip/MVCNMF
 
-simulated_communities_field_red100_soil2_3speciesup03_SNR60.csv https://drive.google.com/file/d/1Z01Hz-8s4KUdhb-YgLu8SyISLNCvZc_K/view?usp=sharing includes the spectral signature (400-2400 nm), the soil_abundance and the plant diversity (Taxonomic and phylogenetic) of 15'300 simulated communities to run experiment one.
+simulated_communities_field_red100_soil2_3speciesup03_SNR60.csv used in experiment one can be downloaded from https://drive.google.com/file/d/1Z01Hz-8s4KUdhb-YgLu8SyISLNCvZc_K/view?usp=sharing and includes the spectral signature (400-2400 nm), the soil_abundance and the plant diversity (Taxonomic and phylogenetic) of 15'300 simulated communities to run experiment one.
 
 
 DESIS_experiment_2.R provides the code to run experiment two on the DESIS data divided in subimages for the PPI method.
