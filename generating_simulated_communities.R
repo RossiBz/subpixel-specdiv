@@ -25,7 +25,7 @@ library(V.PhyloMaker)
 
 #load spectral signature of 17 dominant grasses and two soil spectra---------
 endmember_grass <- read.table(
-  "gis_work/spectral_libraries/TGPP_insitu_average_spectral_signatures.csv",
+  "TGPP_insitu_average_spectral_signatures.csv",
   sep = ",",
   header = TRUE
 )
@@ -34,7 +34,7 @@ endmember_grass <- read.table(
 #load species data to generate phylogentetic tree ---------------------
 
 species.df <- read.table(
-  "code/input/TGPP_2021_AbunMatrix.csv",
+  "TGPP_2021_AbunMatrix.csv",
   #includes 253 species
   sep = ";",
   quote = "\"*",
@@ -172,7 +172,7 @@ for (s in 3:19)
 
 
 
-#add noise
+#add noise to each spectral signature--------------------------------------
 dim_data_spec <- dim(info_simu[, 6:2006])
 B <- dim_data_spec[2]
 N <- dim_data_spec[1]
