@@ -7,7 +7,8 @@ Rossi, C., and Gholizadeh, H. (2023). Uncovering the hidden diversity: Leveragin
 The codes rely on the R package unmix https://github.com/RossiBz/unmix/ developed in the framework of the study.
 
 simulated_com_experiment_1.R provides the code to run experiment one on the simulated communities for the Vertex component analysis (VCA) and Purest pixel index (PPI) endmember extract techniques. 
-For the endmember extraction techniques, SISAL and MVC-NMF, Matlab was used. The codes are available from http://www.lx.it.pt/~bioucas/code.html and https://github.com/aicip/MVCNMF
+simulated_com_experiment_1_sisal_mvcnmf.m is the matlab code to estimate the endmember abundance when  SISAL or MVC-NMF algorithms are used for endmember extraction.
+The codes for these algorithms are available from http://www.lx.it.pt/~bioucas/code.html and https://github.com/aicip/MVCNMF
 
 simulated_communities_field_red100_soil2_3speciesup03_SNR60.csv https://drive.google.com/file/d/1Z01Hz-8s4KUdhb-YgLu8SyISLNCvZc_K/view?usp=sharing includes the spectral signature (400-2400 nm), the soil_abundance and the plant diversity (Taxonomic and phylogenetic) of 15'300 simulated communities to run experiment one.
 
