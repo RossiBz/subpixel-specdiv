@@ -6,7 +6,7 @@ Rossi, C., and Gholizadeh, H. (2023). Uncovering the hidden diversity: Leveragin
 
 The R codes rely on the R package unmix https://github.com/RossiBz/unmix/ developed in the framework of the study.
 
-simulated_com_experiment_1.R provides the code to run experiment one on the simulated communities for the Vertex component analysis (VCA) and Purest pixel index (PPI) endmember extract techniques. 
+simulated_com_experiment_1.R provides the code to run experiment one on the simulated communities for the Vertex Component Analysis (VCA) and Purest Pixel Index (PPI) endmember extract techniques. 
 
 simulated_com_experiment_1_sisal_mvcnmf.m is the matlab code to estimate the endmember abundance when  SISAL or MVC-NMF algorithms are used for endmember extraction.
 The codes for these algorithms are available from http://www.lx.it.pt/~bioucas/code.html and https://github.com/aicip/MVCNMF
