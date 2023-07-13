@@ -1,6 +1,6 @@
-# Calculaiting the endmember diversity 
+# Calculaiting the endmember diversity from remote sensing data
 
-Here we provide the codes used to calculate the endmember diversity in Rossi & Gholizadeh (2023). 
+Here we provide the codes used to calculate the endmember diversity from hyperpsectral data in Rossi & Gholizadeh (2023). 
 
 Rossi, C., and Gholizadeh, H. (2023). Uncovering the hidden diversity: Leveraging sub-pixel spectral diversity to estimate plant diversity from space. Submitted to Remote Sensing of Environment.
 
