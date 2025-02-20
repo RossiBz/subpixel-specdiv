@@ -2,7 +2,7 @@
 
 Here we provide the codes used to calculate the endmember diversity from hyperpsectral data in Rossi & Gholizadeh (2023). 
 
-Rossi, C., and Gholizadeh, H. (2023). Uncovering the hidden diversity: Leveraging sub-pixel spectral diversity to estimate plant diversity from space. Submitted to Remote Sensing of Environment.
+Rossi, C., and Gholizadeh, H. (2023). Uncovering the hidden diversity: Leveraging sub-pixel spectral diversity to estimate plant diversity from space. Remote Sensing of Environment https://doi.org/10.1016/j.rse.2023.113734
 
 The R codes rely on the R package unmix https://github.com/RossiBz/unmix/ developed in the framework of the study.
 
